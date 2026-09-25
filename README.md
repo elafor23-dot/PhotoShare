@@ -62,3 +62,4 @@ Import `database.sql` into MySQL before running the application.
 ## Authors
 
 PhotoShare Project Team
+
