@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+main {
+    min-height: 70vh;
+}
+
+.card img {
+    display: block;
+}
+
+footer {
+    margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+    .navbar-nav {
+        margin-top: 10px;
+    }
+}

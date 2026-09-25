@@ -1,0 +1,42 @@
+CREATE DATABASE IF NOT EXISTS alzikrayat
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+USE alzikrayat;
+
+CREATE TABLE users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    location VARCHAR(255) NULL,
+    description TEXT NULL,
+    occupation VARCHAR(150) NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE photos (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    file_name VARCHAR(255) NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    description TEXT NULL,
+    date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_photos_user
+        FOREIGN KEY (user_id) REFERENCES users(id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE comments (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    photo_id INT UNSIGNED NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    comment TEXT NOT NULL,
+    date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_comments_photo
+        FOREIGN KEY (photo_id) REFERENCES photos(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_comments_user
+        FOREIGN KEY (user_id) REFERENCES users(id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
