@@ -60,6 +60,5 @@ Import `database.sql` into MySQL before running the application.
 - User output should be escaped when displayed in HTML.
 
 ## Authors
-
-PhotoShare Project Team
+Elaf Mohammed Saleh Abdulhafez Ali
 
